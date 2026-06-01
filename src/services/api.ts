@@ -96,7 +96,7 @@ async function appsScriptFetch<T>(path: string, init: RequestInit = {}): Promise
   return payload.data as T;
 }
 
-export function toQueryString(params: Record<string, string | number | boolean | undefined>): string {
+export function toQueryString<T extends object>(params: T): string {
   const search = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
