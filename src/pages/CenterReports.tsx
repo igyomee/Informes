@@ -206,7 +206,7 @@ export function CenterReports() {
         </div>
       </section>
 
-      {message ? <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">{message}</div> : null}
+      {message ? <div className="rounded-lg border border-black bg-yellow-100 p-4 text-sm font-semibold text-black">{message}</div> : null}
       {error ? <ErrorBanner message={error} /> : null}
       {loading ? <LoadingState label="Cargando revisiones del centro" /> : null}
 

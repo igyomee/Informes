@@ -1,5 +1,11 @@
+import { APP_MODULES, MODULE_STORAGE_KEY, getModuleByKey, type ModuleKey } from '../config/modules';
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '/api';
-const API_BACKEND = import.meta.env.VITE_API_BACKEND ?? (API_BASE_URL.includes('script.google.com') ? 'apps-script' : 'express');
+const API_BACKEND =
+  import.meta.env.VITE_API_BACKEND ??
+  (API_BASE_URL.includes('script.google.com') || APP_MODULES.some((module) => module.envUrl.includes('script.google.com'))
+    ? 'apps-script'
+    : 'express');
 const PASSWORD_KEY = 'maintenance_app_password';
 
 export function isAppsScriptBackend(): boolean {
@@ -18,6 +24,23 @@ export function clearStoredPassword(): void {
   window.localStorage.removeItem(PASSWORD_KEY);
 }
 
+export function getStoredModule(): ModuleKey {
+  return getModuleByKey(window.localStorage.getItem(MODULE_STORAGE_KEY)).key;
+}
+
+export function setStoredModule(moduleKey: ModuleKey): void {
+  window.localStorage.setItem(MODULE_STORAGE_KEY, moduleKey);
+}
+
+export function getActiveApiBaseUrl(): string {
+  if (isAppsScriptBackend()) {
+    const module = getModuleByKey(getStoredModule());
+    return module.envUrl || API_BASE_URL;
+  }
+
+  return API_BASE_URL;
+}
+
 export async function apiFetch<T>(path: string, init: RequestInit = {}): Promise<T> {
   if (isAppsScriptBackend()) {
     return appsScriptFetch<T>(path, init);
@@ -34,7 +57,7 @@ export async function apiFetch<T>(path: string, init: RequestInit = {}): Promise
     headers.set('x-app-password', password);
   }
 
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+  const response = await fetch(`${getActiveApiBaseUrl()}${path}`, {
     ...init,
     headers
   });
@@ -67,7 +90,7 @@ async function appsScriptFetch<T>(path: string, init: RequestInit = {}): Promise
     body = JSON.parse(init.body);
   }
 
-  const response = await fetch(API_BASE_URL, {
+  const response = await fetch(getActiveApiBaseUrl(), {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain;charset=utf-8'

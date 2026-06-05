@@ -128,7 +128,7 @@ export function ReviewForm({ equipment, template, saving, onSubmit }: ReviewForm
             />
           </label>
           <div className="flex items-end">
-            <span className={`badge mb-1 ${negativeCount > 0 ? 'bg-red-100 text-red-800' : 'bg-emerald-100 text-emerald-800'}`}>
+            <span className={`badge mb-1 border border-black ${negativeCount > 0 ? 'bg-brand text-black' : 'bg-white text-black'}`}>
               {negativeCount > 0 ? <AlertCircle className="mr-1 h-4 w-4" /> : <CheckCircle2 className="mr-1 h-4 w-4" />}
               {negativeCount} incidencias posibles
             </span>

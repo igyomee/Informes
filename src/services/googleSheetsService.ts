@@ -1,7 +1,5 @@
 import type { CenterReport } from '../types/review';
-import { apiFetch, getStoredPassword, isAppsScriptBackend, toQueryString } from './api';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '/api';
+import { apiFetch, getActiveApiBaseUrl, getStoredPassword, isAppsScriptBackend, toQueryString } from './api';
 
 export async function getDashboard(): Promise<{
   totalEquipos: number;
@@ -34,8 +32,9 @@ export async function writeCenterReportSheet(center: string, dateFrom?: string, 
 
 export async function downloadCenterReportCsv(center: string, dateFrom?: string, dateTo?: string): Promise<void> {
   const path = `/reports/center/${encodeURIComponent(center)}/csv${toQueryString({ dateFrom, dateTo })}`;
+  const apiBaseUrl = getActiveApiBaseUrl();
   const response = isAppsScriptBackend()
-    ? await fetch(API_BASE_URL, {
+    ? await fetch(apiBaseUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
@@ -47,7 +46,7 @@ export async function downloadCenterReportCsv(center: string, dateFrom?: string,
           body: {}
         })
       })
-    : await fetch(`${API_BASE_URL}${path}`, {
+    : await fetch(`${apiBaseUrl}${path}`, {
         headers: {
           'x-app-password': getStoredPassword()
         }

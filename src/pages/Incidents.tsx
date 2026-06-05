@@ -46,7 +46,7 @@ export function Incidents() {
     <div className="space-y-4">
       <section className="panel p-4">
         <div className="flex items-center gap-2">
-          <ShieldAlert className="h-5 w-5 text-red-700" aria-hidden="true" />
+          <ShieldAlert className="h-5 w-5 text-black" aria-hidden="true" />
           <h1 className="text-xl font-bold text-ink">Incidencias</h1>
         </div>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
@@ -112,10 +112,10 @@ export function Incidents() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className={`badge ${incident.prioridad === 'Crítica' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-900'}`}>
+                  <span className={`badge border border-black ${incident.prioridad === 'Crítica' ? 'bg-brand text-black' : 'bg-white text-black'}`}>
                     {incident.prioridad}
                   </span>
-                  <span className={`badge ${closed ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-800'}`}>
+                  <span className={`badge border border-black ${closed ? 'bg-white text-black' : 'bg-brand text-black'}`}>
                     {incident.estadoIncidencia}
                   </span>
                 </div>

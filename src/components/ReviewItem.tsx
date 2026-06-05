@@ -37,7 +37,7 @@ export function ReviewItem({ item, answer, onChange }: ReviewItemProps) {
           </p>
           <h3 className="mt-1 text-base font-semibold text-ink">{item.item}</h3>
         </div>
-        {item.obligatorio ? <span className="badge bg-amber-100 text-amber-900">Obligatorio</span> : null}
+        {item.obligatorio ? <span className="badge border border-black bg-brand text-black">Obligatorio</span> : null}
       </div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-[minmax(220px,1fr)_auto_auto]">
@@ -84,7 +84,7 @@ export function ReviewItem({ item, answer, onChange }: ReviewItemProps) {
             checked={answer.incidencia}
             onChange={(event) => update('incidencia', event.target.checked)}
           />
-          <Flag className="h-4 w-4 text-red-600" aria-hidden="true" />
+          <Flag className="h-4 w-4 text-black" aria-hidden="true" />
           Incidencia
         </label>
 

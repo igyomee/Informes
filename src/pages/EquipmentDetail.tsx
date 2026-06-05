@@ -59,7 +59,7 @@ export function EquipmentDetail() {
         </Link>
       </div>
 
-      {message ? <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">{message}</div> : null}
+      {message ? <div className="rounded-lg border border-black bg-yellow-100 p-4 text-sm font-semibold text-black">{message}</div> : null}
 
       <EquipmentEditor equipment={equipment} saving={saving} onSave={save} />
 
@@ -113,14 +113,14 @@ export function EquipmentDetail() {
 
           <div className="panel p-4">
             <div className="flex items-center gap-2">
-              <ShieldAlert className="h-5 w-5 text-red-700" aria-hidden="true" />
+              <ShieldAlert className="h-5 w-5 text-black" aria-hidden="true" />
               <h2 className="text-lg font-bold text-ink">Incidencias</h2>
             </div>
             <p className="mt-3 text-sm text-slate-700">Abiertas: {history?.openIncidents.length ?? 0}</p>
             <p className="text-sm text-slate-700">Cerradas: {history?.closedIncidents.length ?? 0}</p>
             <div className="mt-3 space-y-2">
               {history?.openIncidents.slice(0, 4).map((incident) => (
-                <div key={incident.idIncidencia} className="rounded-md bg-red-50 p-3 text-sm text-red-900">
+                <div key={incident.idIncidencia} className="rounded-md border border-black bg-yellow-100 p-3 text-sm text-black">
                   <p className="font-semibold">{incident.prioridad}</p>
                   <p>{incident.descripcion}</p>
                 </div>

@@ -12,7 +12,7 @@ export function EquipmentCard({ equipment }: { equipment: Equipment }) {
             {equipment.instalacion} · {equipment.familia} · Nº {equipment.numeroEquipo}
           </p>
         </div>
-        <span className={`badge ${equipment.activo ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}`}>
+        <span className={`badge border border-black ${equipment.activo ? 'bg-brand text-black' : 'bg-white text-black'}`}>
           <Power className="mr-1 h-3.5 w-3.5" aria-hidden="true" />
           {equipment.activo ? 'Activo' : 'Inactivo'}
         </span>

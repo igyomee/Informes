@@ -60,7 +60,7 @@ export function EquipmentList({ equipment, sortBy, sortDir, onSort }: EquipmentL
                 <td className="px-4 py-3">{item.familia}</td>
                 <td className="px-4 py-3">{item.ubicacion}</td>
                 <td className="px-4 py-3">
-                  <span className={`badge ${item.activo ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}`}>
+                  <span className={`badge border border-black ${item.activo ? 'bg-brand text-black' : 'bg-white text-black'}`}>
                     {item.activo ? 'Sí' : 'No'}
                   </span>
                 </td>

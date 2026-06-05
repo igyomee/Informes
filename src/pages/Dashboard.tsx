@@ -21,17 +21,17 @@ export function Dashboard() {
   if (!data) return <LoadingState label="Cargando indicadores" />;
 
   const metrics = [
-    { label: 'Total de equipos', value: data.totalEquipos, icon: Wrench, tone: 'text-teal-700 bg-teal-50' },
-    { label: 'Revisiones del mes', value: data.revisionesMes, icon: ClipboardCheck, tone: 'text-blue-700 bg-blue-50' },
-    { label: 'Incidencias abiertas', value: data.incidenciasAbiertas, icon: AlertTriangle, tone: 'text-amber-700 bg-amber-50' },
-    { label: 'Incidencias críticas', value: data.incidenciasCriticas, icon: AlertTriangle, tone: 'text-red-700 bg-red-50' },
-    { label: 'Equipos pendientes', value: data.equiposPendientes, icon: FileText, tone: 'text-slate-700 bg-slate-100' }
+    { label: 'Total de equipos', value: data.totalEquipos, icon: Wrench, tone: 'text-black bg-brand' },
+    { label: 'Revisiones del mes', value: data.revisionesMes, icon: ClipboardCheck, tone: 'text-black bg-white border border-black' },
+    { label: 'Incidencias abiertas', value: data.incidenciasAbiertas, icon: AlertTriangle, tone: 'text-black bg-yellow-100 border border-black' },
+    { label: 'Incidencias críticas', value: data.incidenciasCriticas, icon: AlertTriangle, tone: 'text-black bg-brand' },
+    { label: 'Equipos pendientes', value: data.equiposPendientes, icon: FileText, tone: 'text-black bg-white border border-black' }
   ];
 
   return (
     <div className="space-y-6">
       {data.mockMode ? (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+        <div className="rounded-lg border border-black bg-yellow-100 p-4 text-sm font-semibold text-black">
           La app está funcionando con datos mock porque no hay credenciales de Google Sheets configuradas.
         </div>
       ) : null}
@@ -54,11 +54,11 @@ export function Dashboard() {
           <h2 className="mt-3 text-lg font-bold text-ink">Buscar máquina</h2>
         </Link>
         <Link className="panel p-5 transition hover:border-brand" to="/centros">
-          <FileText className="h-6 w-6 text-blue-700" aria-hidden="true" />
+          <FileText className="h-6 w-6 text-black" aria-hidden="true" />
           <h2 className="mt-3 text-lg font-bold text-ink">Revisiones por centro</h2>
         </Link>
         <Link className="panel p-5 transition hover:border-brand" to="/incidencias">
-          <AlertTriangle className="h-6 w-6 text-red-700" aria-hidden="true" />
+          <AlertTriangle className="h-6 w-6 text-black" aria-hidden="true" />
           <h2 className="mt-3 text-lg font-bold text-ink">Incidencias</h2>
         </Link>
       </section>
