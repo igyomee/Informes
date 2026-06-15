@@ -324,6 +324,32 @@ google-apps-script/puertas/Code.gs
 
 Importante: el Google Sheets general `Fichas QR actualizado 2026-06-09` debe seguir publicado como CSV para que los HTML originales puedan leerlo.
 
+Ultimo ajuste de Clima - Tipo Instalacion:
+
+- En las fichas de Clima se ha quitado el checkbox visible `Activo`.
+- Al lado de `Carga de refrigerante (kg)` aparece ahora el campo editable `Tipo Instalación`.
+- Ese campo lee y guarda la columna `Tipo instalación` del inventario de Clima.
+- En la exportacion al Google Sheets general de fichas QR, ese dato se mantiene en la columna correspondiente.
+- Para este cambio sube a GitHub:
+
+```text
+src/pages/CenterMaintenance.tsx
+src/types/equipment.ts
+google-apps-script/Code.gs
+google-apps-script/clima/Code.gs
+google-apps-script/electrico/Code.gs
+google-apps-script/puertas/Code.gs
+GITHUB_FILES.md
+```
+
+Despues pega y despliega de nuevo cada Apps Script:
+
+```text
+google-apps-script/clima/Code.gs
+google-apps-script/electrico/Code.gs
+google-apps-script/puertas/Code.gs
+```
+
 Cambio vigente para fichas QR manteniendo el formato original:
 
 - Los 6 HTML vuelven a conservar el formato y funciones originales de los archivos que estaban en Descargas.
